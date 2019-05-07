@@ -1,0 +1,96 @@
+{
+    "type": "object",
+    "properties": {
+        "bucket": {
+            "required": true,
+            "type": "string"
+        },
+        "generation": {
+            "type": "string"
+        },
+        "object": {
+            "required": true,
+            "type": "string"
+        },
+        "userProject": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "A bucket/object IAM policy.",
+            "properties": {
+                "bindings": {
+                    "description": "An association between a role, which comes with a set of permissions, and members who may assume that role.",
+                    "items": {
+                        "properties": {
+                            "condition": {
+                                "description": "The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.",
+                                "properties": {
+                                    "description": {
+                                        "description": "An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.",
+                                        "type": "string"
+                                    },
+                                    "expression": {
+                                        "description": "Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.",
+                                        "type": "string"
+                                    },
+                                    "kind": {
+                                        "default": "storage#expr",
+                                        "description": "The kind of item this is. For storage, this is always storage#expr. This field is ignored on input.",
+                                        "type": "string"
+                                    },
+                                    "location": {
+                                        "description": "An optional string indicating the location of the expression for error reporting, e.g. a file name and a position in the file.",
+                                        "type": "string"
+                                    },
+                                    "title": {
+                                        "description": "An optional title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "members": {
+                                "description": "A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:  \n- allUsers — A special identifier that represents anyone on the internet; with or without a Google account.  \n- allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.  \n- user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.  \n- serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .  \n- group:emailid — An email address that represents a Google group. For example, group:admins@example.com.  \n- domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.  \n- projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project  \n- projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project  \n- projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            "role": {
+                                "description": "The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.\nThe new IAM roles are:  \n- roles/storage.admin — Full control of Google Cloud Storage resources.  \n- roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.  \n- roles/storage.objectCreator — Access to create objects in Google Cloud Storage.  \n- roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:  \n- roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.  \n- roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.  \n- roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.  \n- roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.  \n- roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "etag": {
+                    "description": "HTTP 1.1  Entity tag for the policy.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "storage#policy",
+                    "description": "The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.",
+                    "type": "string"
+                },
+                "resourceId": {
+                    "description": "The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

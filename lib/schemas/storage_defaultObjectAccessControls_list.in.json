@@ -1,0 +1,28 @@
+{
+    "type": "object",
+    "properties": {
+        "bucket": {
+            "required": true,
+            "type": "string"
+        },
+        "ifMetagenerationMatch": {
+            "type": "string"
+        },
+        "ifMetagenerationNotMatch": {
+            "type": "string"
+        },
+        "userProject": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        }
+    }
+}

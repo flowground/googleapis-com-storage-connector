@@ -1,0 +1,31 @@
+{
+    "type": "object",
+    "properties": {
+        "bucket": {
+            "required": true,
+            "type": "string"
+        },
+        "ifMetagenerationMatch": {
+            "type": "string"
+        },
+        "ifMetagenerationNotMatch": {
+            "type": "string"
+        },
+        "projection": {
+            "type": "string",
+            "enum": [
+                "full",
+                "noAcl"
+            ]
+        },
+        "userProject": {
+            "type": "string"
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "type": "object",
+    "properties": {
+        "bucket": {
+            "required": true,
+            "type": "string"
+        },
+        "generation": {
+            "type": "string"
+        },
+        "ifGenerationMatch": {
+            "type": "string"
+        },
+        "ifGenerationNotMatch": {
+            "type": "string"
+        },
+        "ifMetagenerationMatch": {
+            "type": "string"
+        },
+        "ifMetagenerationNotMatch": {
+            "type": "string"
+        },
+        "object": {
+            "required": true,
+            "type": "string"
+        },
+        "projection": {
+            "type": "string",
+            "enum": [
+                "full",
+                "noAcl"
+            ]
+        },
+        "userProject": {
+            "type": "string"
+        }
+    }
+}

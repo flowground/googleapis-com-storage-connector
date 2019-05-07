@@ -1,0 +1,849 @@
+{
+    "title": "Cloud Storage",
+    "description": "Stores and retrieves potentially large, immutable data objects.",
+    "docsUrl": "https://developers.google.com/storage/docs/json_api/",
+    "url": "https://api.apis.guru/v2/specs/googleapis.com/storage/v1/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://www.googleapis.com/storage/v1",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "Oauth2": {
+                "label": "Oauth 2.0 authentication",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "storage_buckets_list": {
+            "main": "./lib/actions/storage_buckets_list.js",
+            "title": "Retrieves a list of buckets for a given project.",
+            "description": "Retrieves a list of buckets for a given project.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_buckets_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_buckets_insert": {
+            "main": "./lib/actions/storage_buckets_insert.js",
+            "title": "Creates a new bucket.",
+            "description": "Creates a new bucket.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_buckets_insert.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_buckets_delete": {
+            "main": "./lib/actions/storage_buckets_delete.js",
+            "title": "Permanently deletes an empty bucket.",
+            "description": "Permanently deletes an empty bucket.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_buckets_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_buckets_get": {
+            "main": "./lib/actions/storage_buckets_get.js",
+            "title": "Returns metadata for the specified bucket.",
+            "description": "Returns metadata for the specified bucket.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_buckets_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_buckets_patch": {
+            "main": "./lib/actions/storage_buckets_patch.js",
+            "title": "Patches a bucket. Changes to the bucket will be readable immediately after writing, but configuration changes may take time to propagate.",
+            "description": "Patches a bucket. Changes to the bucket will be readable immediately after writing, but configuration changes may take time to propagate.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_buckets_patch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_buckets_update": {
+            "main": "./lib/actions/storage_buckets_update.js",
+            "title": "Updates a bucket. Changes to the bucket will be readable immediately after writing, but configuration changes may take time to propagate.",
+            "description": "Updates a bucket. Changes to the bucket will be readable immediately after writing, but configuration changes may take time to propagate.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_buckets_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_bucketAccessControls_list": {
+            "main": "./lib/actions/storage_bucketAccessControls_list.js",
+            "title": "Retrieves ACL entries on the specified bucket.",
+            "description": "Retrieves ACL entries on the specified bucket.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_bucketAccessControls_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_bucketAccessControls_insert": {
+            "main": "./lib/actions/storage_bucketAccessControls_insert.js",
+            "title": "Creates a new ACL entry on the specified bucket.",
+            "description": "Creates a new ACL entry on the specified bucket.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_bucketAccessControls_insert.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_bucketAccessControls_delete": {
+            "main": "./lib/actions/storage_bucketAccessControls_delete.js",
+            "title": "Permanently deletes the ACL entry for the specified entity on the specified bucket.",
+            "description": "Permanently deletes the ACL entry for the specified entity on the specified bucket.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_bucketAccessControls_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_bucketAccessControls_get": {
+            "main": "./lib/actions/storage_bucketAccessControls_get.js",
+            "title": "Returns the ACL entry for the specified entity on the specified bucket.",
+            "description": "Returns the ACL entry for the specified entity on the specified bucket.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_bucketAccessControls_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_bucketAccessControls_patch": {
+            "main": "./lib/actions/storage_bucketAccessControls_patch.js",
+            "title": "Patches an ACL entry on the specified bucket.",
+            "description": "Patches an ACL entry on the specified bucket.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_bucketAccessControls_patch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_bucketAccessControls_update": {
+            "main": "./lib/actions/storage_bucketAccessControls_update.js",
+            "title": "Updates an ACL entry on the specified bucket.",
+            "description": "Updates an ACL entry on the specified bucket.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_bucketAccessControls_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_defaultObjectAccessControls_list": {
+            "main": "./lib/actions/storage_defaultObjectAccessControls_list.js",
+            "title": "Retrieves default object ACL entries on the specified bucket.",
+            "description": "Retrieves default object ACL entries on the specified bucket.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_defaultObjectAccessControls_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_defaultObjectAccessControls_insert": {
+            "main": "./lib/actions/storage_defaultObjectAccessControls_insert.js",
+            "title": "Creates a new default object ACL entry on the specified bucket.",
+            "description": "Creates a new default object ACL entry on the specified bucket.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_defaultObjectAccessControls_insert.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_defaultObjectAccessControls_delete": {
+            "main": "./lib/actions/storage_defaultObjectAccessControls_delete.js",
+            "title": "Permanently deletes the default object ACL entry for the specified entity on the specified bucket.",
+            "description": "Permanently deletes the default object ACL entry for the specified entity on the specified bucket.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_defaultObjectAccessControls_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_defaultObjectAccessControls_get": {
+            "main": "./lib/actions/storage_defaultObjectAccessControls_get.js",
+            "title": "Returns the default object ACL entry for the specified entity on the specified bucket.",
+            "description": "Returns the default object ACL entry for the specified entity on the specified bucket.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_defaultObjectAccessControls_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_defaultObjectAccessControls_patch": {
+            "main": "./lib/actions/storage_defaultObjectAccessControls_patch.js",
+            "title": "Patches a default object ACL entry on the specified bucket.",
+            "description": "Patches a default object ACL entry on the specified bucket.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_defaultObjectAccessControls_patch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_defaultObjectAccessControls_update": {
+            "main": "./lib/actions/storage_defaultObjectAccessControls_update.js",
+            "title": "Updates a default object ACL entry on the specified bucket.",
+            "description": "Updates a default object ACL entry on the specified bucket.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_defaultObjectAccessControls_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_buckets_getIamPolicy": {
+            "main": "./lib/actions/storage_buckets_getIamPolicy.js",
+            "title": "Returns an IAM policy for the specified bucket.",
+            "description": "Returns an IAM policy for the specified bucket.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_buckets_getIamPolicy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_buckets_setIamPolicy": {
+            "main": "./lib/actions/storage_buckets_setIamPolicy.js",
+            "title": "Updates an IAM policy for the specified bucket.",
+            "description": "Updates an IAM policy for the specified bucket.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_buckets_setIamPolicy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_buckets_testIamPermissions": {
+            "main": "./lib/actions/storage_buckets_testIamPermissions.js",
+            "title": "Tests a set of permissions on the given bucket to see which, if any, are held by the caller.",
+            "description": "Tests a set of permissions on the given bucket to see which, if any, are held by the caller.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_buckets_testIamPermissions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_buckets_lockRetentionPolicy": {
+            "main": "./lib/actions/storage_buckets_lockRetentionPolicy.js",
+            "title": "Locks retention policy on a bucket.",
+            "description": "Locks retention policy on a bucket.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_buckets_lockRetentionPolicy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_notifications_list": {
+            "main": "./lib/actions/storage_notifications_list.js",
+            "title": "Retrieves a list of notification subscriptions for a given bucket.",
+            "description": "Retrieves a list of notification subscriptions for a given bucket.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_notifications_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_notifications_insert": {
+            "main": "./lib/actions/storage_notifications_insert.js",
+            "title": "Creates a notification subscription for a given bucket.",
+            "description": "Creates a notification subscription for a given bucket.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_notifications_insert.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_notifications_delete": {
+            "main": "./lib/actions/storage_notifications_delete.js",
+            "title": "Permanently deletes a notification subscription.",
+            "description": "Permanently deletes a notification subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_notifications_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_notifications_get": {
+            "main": "./lib/actions/storage_notifications_get.js",
+            "title": "View a notification configuration.",
+            "description": "View a notification configuration.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_notifications_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_objects_list": {
+            "main": "./lib/actions/storage_objects_list.js",
+            "title": "Retrieves a list of objects matching the criteria.",
+            "description": "Retrieves a list of objects matching the criteria.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_objects_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_objects_insert": {
+            "main": "./lib/actions/storage_objects_insert.js",
+            "title": "Stores a new object and metadata.",
+            "description": "Stores a new object and metadata.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_objects_insert.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_objects_watchAll": {
+            "main": "./lib/actions/storage_objects_watchAll.js",
+            "title": "Watch for changes on all objects in a bucket.",
+            "description": "Watch for changes on all objects in a bucket.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_objects_watchAll.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_objects_delete": {
+            "main": "./lib/actions/storage_objects_delete.js",
+            "title": "Deletes an object and its metadata. Deletions are permanent if versioning is not enabled for the bucket, or if the generation parameter is used.",
+            "description": "Deletes an object and its metadata. Deletions are permanent if versioning is not enabled for the bucket, or if the generation parameter is used.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_objects_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_objects_get": {
+            "main": "./lib/actions/storage_objects_get.js",
+            "title": "Retrieves an object or its metadata.",
+            "description": "Retrieves an object or its metadata.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_objects_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_objects_patch": {
+            "main": "./lib/actions/storage_objects_patch.js",
+            "title": "Patches an object's metadata.",
+            "description": "Patches an object's metadata.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_objects_patch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_objects_update": {
+            "main": "./lib/actions/storage_objects_update.js",
+            "title": "Updates an object's metadata.",
+            "description": "Updates an object's metadata.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_objects_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_objectAccessControls_list": {
+            "main": "./lib/actions/storage_objectAccessControls_list.js",
+            "title": "Retrieves ACL entries on the specified object.",
+            "description": "Retrieves ACL entries on the specified object.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_objectAccessControls_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_objectAccessControls_insert": {
+            "main": "./lib/actions/storage_objectAccessControls_insert.js",
+            "title": "Creates a new ACL entry on the specified object.",
+            "description": "Creates a new ACL entry on the specified object.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_objectAccessControls_insert.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_objectAccessControls_delete": {
+            "main": "./lib/actions/storage_objectAccessControls_delete.js",
+            "title": "Permanently deletes the ACL entry for the specified entity on the specified object.",
+            "description": "Permanently deletes the ACL entry for the specified entity on the specified object.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_objectAccessControls_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_objectAccessControls_get": {
+            "main": "./lib/actions/storage_objectAccessControls_get.js",
+            "title": "Returns the ACL entry for the specified entity on the specified object.",
+            "description": "Returns the ACL entry for the specified entity on the specified object.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_objectAccessControls_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_objectAccessControls_patch": {
+            "main": "./lib/actions/storage_objectAccessControls_patch.js",
+            "title": "Patches an ACL entry on the specified object.",
+            "description": "Patches an ACL entry on the specified object.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_objectAccessControls_patch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_objectAccessControls_update": {
+            "main": "./lib/actions/storage_objectAccessControls_update.js",
+            "title": "Updates an ACL entry on the specified object.",
+            "description": "Updates an ACL entry on the specified object.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_objectAccessControls_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_objects_getIamPolicy": {
+            "main": "./lib/actions/storage_objects_getIamPolicy.js",
+            "title": "Returns an IAM policy for the specified object.",
+            "description": "Returns an IAM policy for the specified object.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_objects_getIamPolicy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_objects_setIamPolicy": {
+            "main": "./lib/actions/storage_objects_setIamPolicy.js",
+            "title": "Updates an IAM policy for the specified object.",
+            "description": "Updates an IAM policy for the specified object.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_objects_setIamPolicy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_objects_testIamPermissions": {
+            "main": "./lib/actions/storage_objects_testIamPermissions.js",
+            "title": "Tests a set of permissions on the given object to see which, if any, are held by the caller.",
+            "description": "Tests a set of permissions on the given object to see which, if any, are held by the caller.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_objects_testIamPermissions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_objects_compose": {
+            "main": "./lib/actions/storage_objects_compose.js",
+            "title": "Concatenates a list of existing objects into a new object in the same bucket.",
+            "description": "Concatenates a list of existing objects into a new object in the same bucket.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_objects_compose.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_objects_copy": {
+            "main": "./lib/actions/storage_objects_copy.js",
+            "title": "Copies a source object to a destination object. Optionally overrides metadata.",
+            "description": "Copies a source object to a destination object. Optionally overrides metadata.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_objects_copy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_objects_rewrite": {
+            "main": "./lib/actions/storage_objects_rewrite.js",
+            "title": "Rewrites a source object to a destination object. Optionally overrides metadata.",
+            "description": "Rewrites a source object to a destination object. Optionally overrides metadata.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_objects_rewrite.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_channels_stop": {
+            "main": "./lib/actions/storage_channels_stop.js",
+            "title": "Stop watching resources through this channel",
+            "description": "Stop watching resources through this channel",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_channels_stop.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "storage_projects_serviceAccount_get": {
+            "main": "./lib/actions/storage_projects_serviceAccount_get.js",
+            "title": "Get the email address of this project's Google Cloud Storage service account.",
+            "description": "Get the email address of this project's Google Cloud Storage service account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/storage_projects_serviceAccount_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

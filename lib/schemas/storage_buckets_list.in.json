@@ -1,0 +1,33 @@
+{
+    "type": "object",
+    "properties": {
+        "maxResults": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 1000
+        },
+        "pageToken": {
+            "type": "string"
+        },
+        "prefix": {
+            "type": "string"
+        },
+        "project": {
+            "required": true,
+            "type": "string"
+        },
+        "projection": {
+            "type": "string",
+            "enum": [
+                "full",
+                "noAcl"
+            ]
+        },
+        "userProject": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        }
+    }
+}

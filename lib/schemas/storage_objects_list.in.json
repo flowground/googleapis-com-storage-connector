@@ -1,0 +1,39 @@
+{
+    "type": "object",
+    "properties": {
+        "bucket": {
+            "required": true,
+            "type": "string"
+        },
+        "delimiter": {
+            "type": "string"
+        },
+        "includeTrailingDelimiter": {
+            "type": "boolean"
+        },
+        "maxResults": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 1000
+        },
+        "pageToken": {
+            "type": "string"
+        },
+        "prefix": {
+            "type": "string"
+        },
+        "projection": {
+            "type": "string",
+            "enum": [
+                "full",
+                "noAcl"
+            ]
+        },
+        "userProject": {
+            "type": "string"
+        },
+        "versions": {
+            "type": "boolean"
+        }
+    }
+}

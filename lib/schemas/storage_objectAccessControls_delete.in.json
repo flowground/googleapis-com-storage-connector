@@ -1,0 +1,29 @@
+{
+    "type": "object",
+    "properties": {
+        "bucket": {
+            "required": true,
+            "type": "string"
+        },
+        "entity": {
+            "required": true,
+            "type": "string"
+        },
+        "generation": {
+            "type": "string"
+        },
+        "object": {
+            "required": true,
+            "type": "string"
+        },
+        "userProject": {
+            "type": "string"
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        }
+    }
+}

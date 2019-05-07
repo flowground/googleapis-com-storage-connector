@@ -1,0 +1,83 @@
+{
+    "type": "object",
+    "properties": {
+        "alt": {
+            "type": "string",
+            "enum": [
+                "json"
+            ],
+            "default": "json"
+        },
+        "fields": {
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "An notification channel used to watch for resource changes.",
+            "properties": {
+                "address": {
+                    "description": "The address where notifications are delivered for this channel.",
+                    "type": "string"
+                },
+                "expiration": {
+                    "description": "Date and time of notification channel expiration, expressed as a Unix timestamp, in milliseconds. Optional.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "A UUID or similar unique string that identifies this channel.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "api#channel",
+                    "description": "Identifies this as a notification channel used to watch for changes to a resource. Value: the fixed string \"api#channel\".",
+                    "type": "string"
+                },
+                "params": {
+                    "additionalProperties": {
+                        "description": "Declares a new parameter by name.",
+                        "type": "string"
+                    },
+                    "description": "Additional parameters controlling delivery channel behavior. Optional.",
+                    "type": "object"
+                },
+                "payload": {
+                    "description": "A Boolean value to indicate whether payload is wanted. Optional.",
+                    "type": "boolean"
+                },
+                "resourceId": {
+                    "description": "An opaque ID that identifies the resource being watched on this channel. Stable across different API versions.",
+                    "type": "string"
+                },
+                "resourceUri": {
+                    "description": "A version-specific identifier for the watched resource.",
+                    "type": "string"
+                },
+                "token": {
+                    "description": "An arbitrary string delivered to the target address with each notification delivered over this channel. Optional.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The type of delivery mechanism used for this channel.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}
